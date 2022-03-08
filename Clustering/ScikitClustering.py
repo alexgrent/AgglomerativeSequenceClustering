@@ -23,13 +23,13 @@ class ScikitClustering():
                 matrix= self.get_matrix(distancemetric)
                 model = AgglomerativeClustering(distance_threshold=0,n_clusters=None, linkage = linkage_)
                 y = model.fit(matrix)
-                self.plot_dendrogram(model)
+                #self.plot_dendrogram(model)
                 return y
             else:
                 matrix = self.DistanceMatrix.get_matrix_from_file(matrixFile)
                 model = AgglomerativeClustering(distance_threshold=0, n_clusters=None, linkage=linkage_)
                 y = model.fit(matrix)
-                self.plot_dendrogram(model)
+                #self.plot_dendrogram(model)
                 return y
 
 
