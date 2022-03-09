@@ -28,8 +28,9 @@ class BiopythonClustering():
         tree = treecluster(matrix)
         return tree
 
-    def Agglomerative_clustering_UPGMA(self):
+    def Agglomerative_clustering_UPGMA(self, distance_ma="hamming"):
         m = self.DistanceMatrix.matrix_hamming_distance().tolist()
+        #m = self.get_matrix(distance_matrix).tolist()
         df = pd.DataFrame(m)
         dm = distance_matrix(df.values, df.values)
         distMatrix = DistanceMatrix([str(x) for x in range(len(dm))], [list(x[:i+1]) for i, x in enumerate(dm)])
@@ -46,9 +47,10 @@ class BiopythonClustering():
         print("end")
 
 
+
     def Agglomerative_clustering_tree(self, distance_matrix, linkage='m'): #s -> single linkage #m-> maximum linkage #a -> average linkage
-        distance_matrix = np.delete(distance_matrix, 1, 0)
-        tree = treecluster(data=None, mask=None, weight=None, transpose=False, method=linkage, dist='e', distancematrix=distancematrix())
+        #distance_matrix = np.delete(distance_matrix, 1, 0)
+        tree = treecluster(data=None, mask=None, weight=None, transpose=False, method=linkage, dist='e', distancematrix=distance_matrix)
         print(type(tree))
         print(tree)
 
@@ -103,13 +105,14 @@ class BiopythonClustering():
 
 
 
-
+"""
 clustering = BiopythonClustering("..\DataReader\DATA\Testdata1.csv")
 #clustering.AlginmentClustering("sequence.fasta")
 t = clustering.use_treecluster()
 print(type(t))
 #clustering.test_clustering()
-#clustering.Agglomerative_clustering_UPGMA()
-clustering.Agglomerative_clustering()
+clustering.Agglomerative_clustering_UPGMA()
+#clustering.Agglomerative_clustering()
 #print(str(t[0])[:5])
 #clustering.plot_tree(t)
+"""

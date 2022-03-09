@@ -17,19 +17,22 @@ class ScikitClustering():
 
 
 
-    def Agglomerative_clustering(self, distancemetric = "hamming", linkage_='ward', matrixFile=None):  #agglomerative clusering using file gven at distance, also calculating a neww distnace matrix with Distacnces
+    def Agglomerative_clustering(self, distancemetric = "hamming", linkage_='ward', matrixFile=None, show= True):  #agglomerative clusering using file gven at distance, also calculating a neww distnace matrix with Distacnces
             #either use distancemetric parameter or file   #for plotting with own parameter use plot_dendrogram method
             if matrixFile==None:
                 matrix= self.get_matrix(distancemetric)
                 model = AgglomerativeClustering(distance_threshold=0,n_clusters=None, linkage = linkage_)
                 y = model.fit(matrix)
-                #self.plot_dendrogram(model)
+                if show==True:
+                    self.plot_dendrogram(model)
+                    plt.show()
                 return y
             else:
                 matrix = self.DistanceMatrix.get_matrix_from_file(matrixFile)
                 model = AgglomerativeClustering(distance_threshold=0, n_clusters=None, linkage=linkage_)
                 y = model.fit(matrix)
-                #self.plot_dendrogram(model)
+                if show==True:
+                    self.plot_dendrogram(model)
                 return y
 
 

@@ -65,6 +65,7 @@ class Distance:
         return match_rating_comparison(s1, s2)
 
     def matrix_hamming_distance(self):
+        print("Hamming Calculation...")
         matrix = self.init_matrix()
         for i in self.sequences:
             line_list = np.array([])
@@ -72,6 +73,8 @@ class Distance:
                 line_list = np.append(line_list, self.get_hamming_distance(i, j))
             matrix = np.vstack([matrix, line_list])
             np.delete(line_list, 0, 0)
+        matrix = np.delete(matrix, 0, 0)
+        print(matrix)
         return matrix
 
     def matrix_levenstein_distance(self):
@@ -85,18 +88,21 @@ class Distance:
                 line_list = np.append(line_list, self.get_levenstein_distance(i, j))
             matrix = np.vstack([matrix, line_list])
             np.delete(line_list, 0, 0)
+        matrix = np.delete(matrix, 0, 0)
+        print(matrix)
         return matrix
 
     def matrix_jaro_similarity(self):
         print("jaro-similarity Calculating...")
         matrix = self.init_matrix()
         for i in self.sequences:
-            print("Seq...")
             line_list = np.array([])
             for j in self.sequences:
                 line_list = np.append(line_list, self.get_jaro_similarity(i, j))
             matrix = np.vstack([matrix, line_list])
             np.delete(line_list, 0, 0)
+        matrix = np.delete(matrix, 0, axis=0)
+        print(matrix)
         return matrix
 
     def matrix_jaro_winkler_similarity(self):
@@ -104,11 +110,12 @@ class Distance:
         matrix = self.init_matrix()
         for i in self.sequences:
             line_list = np.array([])
-            print(".")
             for j in self.sequences:
                 line_list = np.append(line_list, self.get_jaro_winkler_similarity(i, j))
             matrix = np.vstack([matrix, line_list])
             np.delete(line_list, 0, 0)
+        matrix = np.delete(matrix, 0, axis=0)
+        print(matrix)
         return matrix
 
     def matrix_damerau_levenshtein_distance(self):
@@ -116,11 +123,12 @@ class Distance:
         matrix = self.init_matrix()
         for i in self.sequences:
             line_list = np.array([])
-            print(".")
             for j in self.sequences:
                 line_list = np.append(line_list, self.get_damerau_levenshtein_distance(i, j))
             matrix = np.vstack([matrix, line_list])
             np.delete(line_list, 0, 0)
+        matrix = np.delete(matrix, 0, axis=0)
+        print(matrix)
         return matrix
 
     def matrix_match_rating_comparison(self):
@@ -132,6 +140,8 @@ class Distance:
                 line_list = np.append(line_list, self.get_match_rating_comparison(i, j))
             matrix = np.vstack([matrix, line_list])
             np.delete(line_list, 0, 0)
+        matrix = np.delete(matrix, 0, axis=0)
+        print(matrix)
         return matrix
 
 

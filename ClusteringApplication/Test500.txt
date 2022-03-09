@@ -1,1 +1,55 @@
-000000000000:00:06.1774420:00:05.2530470:00:05.5775910:00:05.6098170:00:05.9769430000000000NoneNoneNoneNoneNoneNoneNoneNoneNoneNoneNoneNoneNoneNoneNoneNoneNoneNoneNoneNone
+0
+0
+0
+0
+0
+0
+0:00:07.946228
+0:00:08.561505
+0
+0:00:10.7235410:00:09.382531
+0:00:09.180604
+0:00:09.371713
+0:00:10.742852
+0:00:09.534629
+0:00:09.431196
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+None
+None
+None
+None
+None
+AgglomerativeClustering(distance_threshold=0, linkage='complete',
+                        n_clusters=None)
+AgglomerativeClustering(distance_threshold=0, linkage='complete',
+                        n_clusters=None)
+AgglomerativeClustering(distance_threshold=0, linkage='complete',
+                        n_clusters=None)
+AgglomerativeClustering(distance_threshold=0, linkage='complete',
+                        n_clusters=None)
+AgglomerativeClustering(distance_threshold=0, linkage='complete',
+                        n_clusters=None)
+AgglomerativeClustering(distance_threshold=0, linkage='average',
+                        n_clusters=None)
+AgglomerativeClustering(distance_threshold=0, linkage='average',
+                        n_clusters=None)
+AgglomerativeClustering(distance_threshold=0, linkage='average',
+                        n_clusters=None)
+AgglomerativeClustering(distance_threshold=0, linkage='average',
+                        n_clusters=None)
+AgglomerativeClustering(distance_threshold=0, linkage='average',
+                        n_clusters=None)
+AgglomerativeClustering(distance_threshold=0, n_clusters=None)
+AgglomerativeClustering(distance_threshold=0, n_clusters=None)
+AgglomerativeClustering(distance_threshold=0, n_clusters=None)
+AgglomerativeClustering(distance_threshold=0, n_clusters=None)
+AgglomerativeClustering(distance_threshold=0, n_clusters=None)
