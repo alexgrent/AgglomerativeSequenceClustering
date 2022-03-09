@@ -29,7 +29,7 @@ class BiopythonClustering():
         return tree
 
     def Agglomerative_clustering_UPGMA(self, distance_ma="hamming"):
-        m = self.DistanceMatrix.matrix_hamming_distance().tolist()
+        m = self.DistanceMatrix.matrix_hamming_distance().tolist() #TODO ue methods similar to scikit clustering
         #m = self.get_matrix(distance_matrix).tolist()
         df = pd.DataFrame(m)
         dm = distance_matrix(df.values, df.values)
