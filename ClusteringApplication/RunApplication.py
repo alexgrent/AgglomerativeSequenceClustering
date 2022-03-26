@@ -10,7 +10,7 @@ TEST_DATA3 = "..\DataReader\DATA\Testdata100.csv"
 import ClusteringApplication.ClusteringApp as app
 
 
-App = app.ClusteringApp(TEST_DATA1)
+App = app.ClusteringApp(TEST_DATA3)
 
 #App.performScikitClusteringSingleLinkage()
 #App.performScikitClusteringCompleteLinkage()
@@ -18,7 +18,6 @@ App = app.ClusteringApp(TEST_DATA1)
 #App.performScikitClusteringWardLinkage()
 #App.saveData("Test100.txt", "Test100")
 
+App.runtimeResultsClustering()
 #App.performBiopythonClusteringUPGMA()
-
-#Do not use needs some debugging
 #App.performBiopythonClusteringTreecluster()

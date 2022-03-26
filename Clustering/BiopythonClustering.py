@@ -3,7 +3,7 @@ from Bio.Align.Applications import MafftCommandline, MuscleCommandline, Clustalw
 from Bio.Cluster import distancematrix, clustercentroids, treecluster, kcluster, somcluster, pca
 from Bio import Phylo
 from Bio.Phylo.TreeConstruction import DistanceCalculator
-import matplotlib.pyplot
+import matplotlib.pyplot as plt
 import pylab
 from scipy.spatial import distance_matrix
 from Bio import Phylo
@@ -28,24 +28,25 @@ class BiopythonClustering():
         tree = treecluster(matrix)
         return tree
 
-    def Agglomerative_clustering_UPGMA(self, distance_ma="hamming"):
-        m = self.DistanceMatrix.matrix_hamming_distance().tolist() #TODO ue methods similar to scikit clustering
-        #m = self.get_matrix(distance_matrix).tolist()
-        df = pd.DataFrame(m)
-        dm = distance_matrix(df.values, df.values)
-        distMatrix = DistanceMatrix([str(x) for x in range(len(dm))], [list(x[:i+1]) for i, x in enumerate(dm)])
-        constructor = DistanceTreeConstructor()
-        Tree = constructor.upgma(distMatrix)
-        for i, c in enumerate(Tree.find_clades()):
-            print("calculating..")
-            if c.name.lower().find("inner") >=0:
-                c.name =""
-        Phylo.draw(tree=Tree)
-        matplotlib.pyplot.pause(10)
-        Phylo.draw_ascii(tree=Tree)
-        matplotlib.pyplot.pause(10)
-        print("end")
-
+    def Agglomerative_clustering_UPGMA(self, distance_ma="hamming", matrix_file = None):
+        if distance_matrix == None:
+            m = self.get_matrix(distance_ma)
+            m = m.tolist()
+            df = pd.DataFrame(m)
+            dm = distance_matrix(df.values, df.values)
+            distMatrix = DistanceMatrix([str(x) for x in range(len(dm))], [list(x[:i+1]) for i, x in enumerate(dm)])
+            constructor = DistanceTreeConstructor()
+            Tree = constructor.upgma(distMatrix)
+            return Tree
+        """else:
+            m = self.DistanceMatrix.get_matrix_from_file(matrix_file)
+            m = m.tolist()
+            df = pd.DataFrame(m)
+            dm = distance_matrix(df.values, df.values)
+            distMatrix = DistanceMatrix([str(x) for x in range(len(dm))], [list(x[:i + 1]) for i, x in enumerate(dm)])
+            constructor = DistanceTreeConstructor()
+            Tree = constructor.upgma(distMatrix)"""
+        #return Tree
 
 
     def Agglomerative_clustering_tree(self, distance_matrix, linkage='m'): #s -> single linkage #m-> maximum linkage #a -> average linkage
@@ -55,14 +56,19 @@ class BiopythonClustering():
         print(tree)
 
 
-    def plot_dendrogram(self, tree_object):
+    def plot_dendrogram(self, tree_object, save = False, save_filename = None):
         for i, c in enumerate(tree_object.find_clades()):
             print("calculating..")
             if c.name.lower().find("inner") >=0:
                 c.name =""
         Phylo.draw(tree=tree_object)
+        if save == True:
+            plt.savefig(save_filename)
+        else:
+            plt.show()
 
-    def ascii_dendrogram(self, tree_object):
+
+    def plot_ascii_dendrogram(self, tree_object):
         for i, c in enumerate(tree_object.find_clades()):
             print("calculating..")
             if c.name.lower().find("inner") >=0:
@@ -98,7 +104,7 @@ class BiopythonClustering():
             if c.name.lower().find("inner") >= 0:
                 c.name = ""
         Phylo.draw(UPGMATree)
-        matplotlib.pyplot.pause(10)
+        #matplotlib.pyplot.pause(10)
         print("fsdf", type(UPGMATree))
 
 

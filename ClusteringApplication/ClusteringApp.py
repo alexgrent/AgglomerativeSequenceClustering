@@ -11,8 +11,6 @@ the calculation of specific task is implemented in the class the evaluation not!
 """
 
 
-
-
 class ClusteringApp:
     distanceCalculater = None
     dataCollector = None
@@ -22,10 +20,10 @@ class ClusteringApp:
 
     def __init__(self, Testdatafile):
         print("starting evaluation")
-        self.distanceCalculation = d.Distance("..\DataReader\DATA\Testdata1.csv")
+        self.distanceCalculation = d.Distance(Testdatafile)
         self.dataCollector = dc.DataCollector()
-        self.scikitClustering = scc.ScikitClustering("..\DataReader\DATA\Testdata1.csv")
-        self.biopythonClustering = bc.BiopythonClustering("..\DataReader\DATA\Testdata1.csv")
+        self.scikitClustering = scc.ScikitClustering(Testdatafile)
+        self.biopythonClustering = bc.BiopythonClustering(Testdatafile)
 
     def saveData(self, log_file, id):
         self.dataCollector.saveData(log_file, id)
@@ -195,9 +193,57 @@ class ClusteringApp:
         self.dataCollector.runtimeDamerauClusteringModelWardLinkage = timedelta(seconds=end_ - start_)
 
     def performBiopythonClusteringUPGMA(self):
-        self.biopythonClustering.Agglomerative_clustering_UPGMA()
+        tree = self.biopythonClustering.Agglomerative_clustering_UPGMA()
+        self.biopythonClustering.plot_dendrogram(tree,True, "upgmatree")
+        #self.biopythonClustering.plot_ascii_dendrogram(tree)
 
     def performBiopythonClusteringTreecluster(self):
         self.biopythonClustering.Agglomerative_clustering_tree("hamming", linkage='s')
         self.biopythonClustering.Agglomerative_clustering_tree( "hamming", linkage='a')
         self.biopythonClustering.Agglomerative_clustering_tree( "hamming", linkage='m')
+
+    def runtimeResultsClustering(self):  #runtime calculation with exisiting distance matrix and without visulaiziation
+        hamming = self.distanceCalculation.matrix_hamming_distance()
+        self.distanceCalculation.save_matrix("Test_matrix",hamming)
+        print("###Starting clustering runtime tests###")
+
+        start_ = timer()
+        self.scikitClustering.Agglomerative_clustering("hamming", "single", "Test_matrix", False)
+        end_ = timer()
+        print("Runtime: Scikit Clustering Single linkage: ", timedelta(seconds=end_-start_))
+
+        start_ = timer()
+        self.scikitClustering.Agglomerative_clustering("hamming", "complete", "Test_matrix", False)
+        end_ = timer()
+        print("Runtime: Scikit Clustering Complete linkage: ", timedelta(seconds=end_-start_))
+
+        start_ = timer()
+        self.scikitClustering.Agglomerative_clustering("hamming", "average", "Test_matrix", False)
+        end_ = timer()
+        print("Runtime: Scikit Clustering Average linkage: ", timedelta(seconds=end_-start_))
+
+        start_ = timer()
+        self.scikitClustering.Agglomerative_clustering("hamming", "ward", "Test_matrix", False)
+        end_ = timer()
+        print("Runtime: Scikit Clustering Ward linkage: ", timedelta(seconds=end_-start_))
+
+        start_ = timer()
+        #self.biopythonClustering.Agglomerative_clustering_UPGMA(hamming, "Test_matrix")
+        end_ = timer()
+        print("Runtime: Biopython UPGMA: ",timedelta(seconds=end_-start_))
+
+        start_ = timer()
+        #self.biopythonClustering.Agglomerative_clustering_tree(hamming, linkage='s')
+        end_ = timer()
+        print("Runtime: Biopython Treecluster Single linkage: ",timedelta(seconds=end_-start_))
+
+        start_ = timer()
+        #self.biopythonClustering.Agglomerative_clustering_tree(hamming, linkage='a')
+        end_ = timer()
+        print("Runtime: Biopython Treecluster Average linkage: ",timedelta(seconds=end_-start_))
+
+        start_ = timer()
+        #self.biopythonClustering.Agglomerative_clustering_tree(hamming, linkage='m')
+        end_ = timer()
+        print("Runtime: Biopython Treecluster Complete linkage: ",timedelta(seconds=end_-start_))
+
