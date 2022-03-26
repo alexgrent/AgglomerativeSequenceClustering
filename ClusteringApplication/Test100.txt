@@ -1,0 +1,55 @@
+id;Test100runtimeHamming;0
+runtimeLevensthein;0
+runtimeJaro;0
+runtimeJaroWinkler;0
+runtimeDamerau;0
+runtimeMatchRating;0
+runtimeHammingClusteringModelAverageLinkage;0:00:08.764968
+runtimeLevenstheinClusteringModelAverageLinkage;0:00:08.003436
+runtimeJaroClusteringModelAverageLinkage;0
+runtimeJaroWinklerclusteringModelAverageLinkage;0:00:07.864344runtimeDamerauClusteringModelAverageLinkage;0:00:09.366896
+runtimeHammingClusteringModelSingleLinkage;0:00:09.363693
+runtimeLevenstheinClusteringModelSingleLinkage;0:00:07.762559
+runtimeJaroClusteringModelSingleLinkage;0:00:08.987475
+runtimeJaroWinklerclusteringModelSingleLinkage;0:00:09.248937
+runtimeDamerauClusteringModelSingleLinkage;0:00:08.547799
+runtimehammingClusteringModelCompleteLinkage;0
+runtimelevenstheinClusteringModelCompleteLinkage;0
+runtimejaroClusteringModelCompleteLinkage;0
+runtimejaroWinklerclusteringModelCompleteLinkage;0
+runtimedamerauClusteringModelCompleteLinkage;0
+runtimehammingClusteringModelWardLinkage;0
+runtimelevenstheinClusteringModelWardLinkage;0
+runtimejaroClusteringModelWardLinkage;0
+runtimejaroWinklerclusteringModelWardLinkage;0
+runtimedamerauClusteringModelWardLinkage;0
+hammingClusteringModelSingleLinkage;None
+levenstheinClusteringModelSingleLinkage;None
+jaroClusteringModelSingleLinkage;None
+jaroWinklerclusteringModelSingleLinkage;None
+damerauClusteringModelSingleLinkage;None
+hammingClusteringModelCompleteLinkage;AgglomerativeClustering(distance_threshold=0, linkage='complete',
+                        n_clusters=None)
+levenstheinClusteringModelCompleteLinkage;AgglomerativeClustering(distance_threshold=0, linkage='complete',
+                        n_clusters=None)
+jaroClusteringModelCompleteLinkage;AgglomerativeClustering(distance_threshold=0, linkage='complete',
+                        n_clusters=None)
+jaroWinklerclusteringModelCompleteLinkage;AgglomerativeClustering(distance_threshold=0, linkage='complete',
+                        n_clusters=None)
+damerauClusteringModelCompleteLinkage;AgglomerativeClustering(distance_threshold=0, linkage='complete',
+                        n_clusters=None)
+hammingClusteringModelAverageLinkage;AgglomerativeClustering(distance_threshold=0, linkage='average',
+                        n_clusters=None)
+levenstheinClusteringModelAverageLinkage;AgglomerativeClustering(distance_threshold=0, linkage='average',
+                        n_clusters=None)
+jaroClusteringModelAverageLinkage;AgglomerativeClustering(distance_threshold=0, linkage='average',
+                        n_clusters=None)
+jaroWinklerclusteringModelAverageLinkage;AgglomerativeClustering(distance_threshold=0, linkage='average',
+                        n_clusters=None)
+damerauClusteringModelAverageLinkage;AgglomerativeClustering(distance_threshold=0, linkage='average',
+                        n_clusters=None)
+hammingClusteringModelWardLinkage;AgglomerativeClustering(distance_threshold=0, n_clusters=None)
+levenstheinClusteringModelWardLinkage;AgglomerativeClustering(distance_threshold=0, n_clusters=None)
+jaroClusteringModelWardLinkage;AgglomerativeClustering(distance_threshold=0, n_clusters=None)
+jaroWinklerclusteringModelWardLinkage;AgglomerativeClustering(distance_threshold=0, n_clusters=None)
+damerauClusteringModelWardLinkage;AgglomerativeClustering(distance_threshold=0, n_clusters=None)
